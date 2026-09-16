@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+
+<meta name="theme-color" content="#070914">
+<meta name="description" content="Mini Games Hub - 50 games built by Anand">
+
+<title>Mini Games Hub | BUILT BY ANAND</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<canvas id="backgroundCanvas"></canvas>
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginScreen" class="screen active">
+
+
+<div class="login-card">
+
+    <div class="login-logo">🎮</div>
+
+    <div class="eyebrow">
+        ⚡ WELCOME PLAYER ⚡
+    </div>
+
+    <h1>
+        MINI
+        <span>GAMES</span>
+        HUB
+    </h1>
+
+    <p>50 games • 20 levels each • Endless challenge</p>
+
+    <div class="built">
+        BUILT BY <strong>ANAND</strong>
+    </div>
+
+    <label for="playerName">
+        ENTER YOUR NAME
+    </label>
+
+    <input
+        id="playerName"
+        type="text"
+        maxlength="20"
+        autocomplete="off"
+        placeholder="Your name..."
+    >
+
+    <button id="enterHub" class="primary-btn">
+        ENTER GAME HUB <span>→</span>
+    </button>
+
+    <div class="login-features">
+
+        <div>
+            <strong>50</strong>
+            <small>GAMES</small>
+        </div>
+
+        <div>
+            <strong>20</strong>
+            <small>LEVELS</small>
+        </div>
+
+        <div>
+            <strong>∞</strong>
+            <small>FUN</small>
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- ================= MAIN APP ================= -->
+
+<main id="mainApp" style="display:none">
+
+
+<!-- HEADER -->
+
+<header class="topbar">
+
+    <button id="menuButton" class="icon-btn">
+        ☰
+    </button>
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🎮
+        </div>
+
+        <div>
+            <strong>MINI GAMES HUB</strong>
+            <small>BUILT BY ANAND</small>
+        </div>
+
+    </div>
+
+    <div class="player-info">
+
+        <span>
+            👤
+        </span>
+
+        <strong id="headerName">
+            Player
+        </strong>
+
+        <div class="header-streak">
+            🔥 <b id="headerStreak">0</b>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- SIDE MENU -->
+
+<aside id="sideMenu" class="side-menu">
+
+    <div class="side-head">
+        <strong>🎮 GAME MENU</strong>
+
+        <button id="closeMenu">
+            ×
+        </button>
+    </div>
+
+    <button class="menu-item" id="menuHome">
+        🏠 Home
+    </button>
+
+    <button class="menu-item" id="menuGames">
+        🎮 All Games
+    </button>
+
+    <button class="menu-item" id="menuScores">
+        🏆 Scores
+    </button>
+
+    <button class="menu-item" id="menuFeedback">
+        💬 Feedback
+    </button>
+
+    <button class="menu-item" id="musicButton">
+        🎵 Music
+    </button>
+
+    <button class="menu-item logout" id="logoutButton">
+        🚪 Logout
+    </button>
+
+</aside>
+
+<div id="menuOverlay"></div>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="homePage" class="page">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                WELCOME BACK
+            </div>
+
+            <h1>
+                Game On,
+                <span id="welcomeName">Player</span>
+                🎮
+            </h1>
+
+            <p>
+                Challenge yourself. Beat your scores.
+                Build your streak.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button id="heroPlayButton"
+                        class="primary-btn">
+                    🎮 PLAY NOW
+                </button>
+
+                <button id="heroGamesButton"
+                        class="secondary-btn">
+                    VIEW GAMES
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-orb">
+            🎮
+        </div>
+
+    </div>
+
+
+    <!-- STREAK -->
+
+    <div class="streak-card">
+
+        <div class="fire">
+            🔥
+        </div>
+
+        <div>
+            <small>YOUR DAILY STREAK</small>
+            <strong id="streakNumber">0</strong>
+            <span>DAYS</span>
+        </div>
+
+        <p>
+            Play today to keep your streak alive!
+        </p>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats-row">
+
+        <div class="stat-card">
+            🎮
+            <small>GAMES PLAYED</small>
+            <strong id="totalGamesStat">0</strong>
+        </div>
+
+        <div class="stat-card">
+            🏆
+            <small>WINS</small>
+            <strong id="winsStat">0</strong>
+        </div>
+
+        <div class="stat-card">
+            🔥
+            <small>BEST STREAK</small>
+            <strong id="streakStat">0</strong>
+        </div>
+
+        <div class="stat-card">
+            ⭐
+            <small>BEST SCORE</small>
+            <strong id="bestScoreStat">0</strong>
+        </div>
+
+    </div>
+
+
+    <!-- FEATURED -->
+
+    <section>
+
+        <div class="section-heading">
+
+            <div>
+                <span>⭐ HAND PICKED</span>
+                <h2>Interesting Games</h2>
+                <p>Start with one of these games.</p>
+            </div>
+
+        </div>
+
+        <div id="featuredGame"
+             class="featured-grid">
+        </div>
+
+    </section>
+
+
+    <!-- ALL GAMES -->
+
+    <section id="allGamesSection">
+
+        <div class="section-heading">
+
+            <div>
+                <span>🎮 GAME LIBRARY</span>
+                <h2>All Games</h2>
+                <p>Choose your game and start playing.</p>
+            </div>
+
+        </div>
+
+        <div class="search-box">
+
+            <span>🔍</span>
+
+            <input
+                id="gameSearch"
+                type="search"
+                placeholder="Search games..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="categories">
+
+            <button class="category active"
+                    data-category="all">
+                🎮 All
+            </button>
+
+            <button class="category"
+                    data-category="brain">
+                🧠 Brain
+            </button>
+
+            <button class="category"
+                    data-category="speed">
+                ⚡ Speed
+            </button>
+
+            <button class="category"
+                    data-category="classic">
+                🎯 Classic
+            </button>
+
+            <button class="category"
+                    data-category="arcade">
+                🔥 Arcade
+            </button>
+
+        </div>
+
+
+        <div id="gamesGrid"
+             class="games-grid">
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <div class="footer-brand">
+            🎮 MINI GAMES HUB
+        </div>
+
+        <div class="footer-built">
+            BUILT BY ANAND <span>♥</span>
+        </div>
+
+        <small>
+            PLAY • COMPETE • IMPROVE • REPEAT
+        </small>
+
+    </footer>
+
+</section>
+
+
+<!-- ================= GAME ================= -->
+
+<section id="gamePage"
+         class="game-page"
+         style="display:none">
+
+    <div class="game-topbar">
+
+        <button id="gameBackButton"
+                class="secondary-btn">
+            ← HOME
+        </button>
+
+        <div class="game-title">
+
+            <div id="gameIcon">
+                🎮
+            </div>
+
+            <div>
+                <h1 id="gameTitle">
+                    Game
+                </h1>
+
+                <p id="gameDescription">
+                    Get ready!
+                </p>
+            </div>
+
+        </div>
+
+        <button id="gameHomeButton"
+                class="secondary-btn">
+            🏠
+        </button>
+
+    </div>
+
+
+    <!-- LEVEL HUD -->
+
+    <div id="levelHud"
+         class="level-hud">
+
+        <div class="level-number">
+
+            <small>LEVEL</small>
+
+            <strong id="currentLevel">
+                1
+            </strong>
+
+            <span>/20</span>
+
+        </div>
+
+        <div class="level-progress">
+
+            <div id="levelProgress"></div>
+
+        </div>
+
+        <div class="live-score">
+
+            <small>SCORE</small>
+
+            <strong id="liveScore">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- IMPORTANT:
+         This container gets a completely new
+         theme for every game.
+    -->
+
+    <div id="gameStage"
+         class="game-stage theme-arcade">
+
+        <div id="gameContent"
+             class="game-content">
+        </div>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+<!-- ================= CINEMATIC INTRO ================= -->
+
+<div id="gameIntro"
+     class="game-intro">
+
+
+<div class="intro-card">
+
+    <div id="introIcon"
+         class="intro-icon">
+        🎮
+    </div>
+
+    <small>
+        NEXT CHALLENGE
+    </small>
+
+    <h1 id="introTitle">
+        Game
+    </h1>
+
+    <p id="introDescription">
+        Get ready!
+    </p>
+
+    <div id="introLevel"
+         class="intro-level">
+        LEVEL 1 / 20
+    </div>
+
+    <div id="introCountdown"
+         class="intro-countdown">
+        3
+    </div>
+
+    <div class="intro-line">
+        <span></span>
+    </div>
+
+</div>
+
+</div>
+
+<!-- ================= LEVEL TRANSITION ================= -->
+
+<div id="levelTransition"
+     class="level-transition">
+
+
+<div>
+    <small>LEVEL</small>
+    <strong id="transitionNumber">
+        2
+    </strong>
+    <span>GET READY</span>
+</div>
+
+
+</div>
+
+<!-- ================= RESULT ================= -->
+
+<div id="resultOverlay"
+     class="result-overlay">
+
+
+<div class="result-card">
+
+    <div id="resultIcon"
+         class="result-icon">
+        🏆
+    </div>
+
+    <small>
+        GAME COMPLETE
+    </small>
+
+    <h2 id="resultTitle">
+        You Win!
+    </h2>
+
+    <p id="resultMessage">
+        Amazing performance!
+    </p>
+
+    <div class="result-score">
+
+        <small>FINAL SCORE</small>
+
+        <strong id="resultScore">
+            0
+        </strong>
+
+    </div>
+
+    <div class="result-buttons">
+
+        <button id="playAgainButton"
+                class="primary-btn">
+            🔄 PLAY AGAIN
+        </button>
+
+        <button id="resultHomeButton"
+                class="secondary-btn">
+            🏠 HOME
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- ================= FEEDBACK ================= -->
+
+<div id="feedbackModal"
+     class="feedback-modal">
+
+
+<div class="feedback-card">
+
+    <button id="closeFeedback"
+            class="close-modal">
+        ×
+    </button>
+
+    <h2>
+        💬 Feedback
+    </h2>
+
+    <p>
+        Tell us how your experience was.
+    </p>
+
+    <div id="rating"
+         class="rating">
+
+        <button data-rating="1">★</button>
+        <button data-rating="2">★</button>
+        <button data-rating="3">★</button>
+        <button data-rating="4">★</button>
+        <button data-rating="5">★</button>
+
+    </div>
+
+    <textarea id="feedbackText"
+              placeholder="Write your feedback..."></textarea>
+
+    <button id="submitFeedback"
+            class="primary-btn">
+        SEND FEEDBACK
+    </button>
+
+    <div id="feedbackHistory"></div>
+
+</div>
+
+
+</div>
+
+<!-- ================= STREAK ================= -->
+
+<div id="streakOverlay"
+     class="streak-overlay">
+
+
+<div class="streak-popup">
+
+    <div>
+        🔥
+    </div>
+
+    <small>
+        DAILY STREAK
+    </small>
+
+    <strong id="streakPopupNumber">
+        1
+    </strong>
+
+    <span>
+        DAYS
+    </span>
+
+    <p>
+        Keep playing every day!
+    </p>
+
+    <button>
+        TAP TO CONTINUE
+    </button>
+
+</div>
+
+
+</div>
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast"
+     class="toast">
+
+
+<span id="toastIcon">
+    ✓
+</span>
+
+<span id="toastMessage">S
+    Message
+</span>
+
+
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="c:\Users\anand\Downloads\anand3.mp3" type="audio/mpeg">
+</audio>
+
+<script src="first.js"></script>
+
+</body>
+</html>
